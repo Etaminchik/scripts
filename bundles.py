@@ -39,7 +39,7 @@ count_radius_all = cur.fetchall()[0][0]
 
 procent_radius_with = format(100 - (count_radius/count_radius_all*100),'.2f')
 
-print('Radius from operator subnets: ', procent_radius_with, "% (", str(count_radius), '/', str(count_radius_all), ')')
+print('Radius: ', procent_radius_with, "% (", str(count_radius), '/', str(count_radius_all), ')')
 
 '''Logins'''
 
@@ -50,7 +50,7 @@ cur.execute(f"SELECT count(*) FROM oims.subscribers where subs_oper_id = {rawf_t
 count_logins = cur.fetchall()[0][0]
 procent_logins = format(100-(count_login/count_logins*100),'.2f')
 
-print('Logins without: ', procent_logins, "% (", count_login, '/', count_logins, ')' )
+print('Logins: ', procent_logins, "% (", count_login, '/', count_logins, ')' )
 
 '''NAT'''
 
