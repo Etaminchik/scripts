@@ -12,7 +12,7 @@ con = psycopg2.connect(
   port="54321"
 )
 
-date_now = (datetime.today() + timedelta(days=1)).strftime("%Y-%m-%d")
+date_now = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 
 '''Num partition and ip masks'''
 
