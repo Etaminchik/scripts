@@ -17,8 +17,8 @@ date_now = datetime.today().strftime("%Y-%m-%d %H:%M:%S")
 '''Num partition and ip masks'''
 
 cur = con.cursor()  
-cur.execute(f"SELECT \"partition\" FROM public.pathman_partition_list where parent = 'oimc.raw_flows'::regclass and range_max < '{date_now}' order by range_max desc limit 1")
-partition = cur.fetchall()[0][0]
+cur.execute(f"SELECT \"partition\" FROM public.pathman_partition_list where parent = 'oimc.raw_flows'::regclass and range_max < '{date_now}' order by range_max desc limit 2")
+partition = cur.fetchall()[0][1]
 partition = ('oimc.raw_flows_' + str(int(partition[15:])-1))
 print('Partition number:', partition)
 
