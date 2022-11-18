@@ -19,7 +19,7 @@ disks = [line.rstrip() for line in disks]
 for i in range(len(disks)):
     mkfs += 'mkfs.xfs /dev/' + disks[i] + ' -f && '
     
-mkdirs = 'mkdir /var/dump/disk{' + str(first_number_disk) + '..' + str(len(disks)+first_number_disk) + '}'
+mkdirs = 'mkdir /var/dump/disk{' + str(first_number_disk) + '..' + str(len(disks)+first_number_disk-1) + '}'
 
 while True:
     line = file_blkid.readline()
