@@ -17,8 +17,9 @@ while True:
 disks = [line.rstrip() for line in disks]
 
 for i in range(len(disks)):
-    mkdirs += 'mkdir /var/dump/disk' + str(i+first_number_disk) + ' && '
     mkfs += 'mkfs.xfs /dev/' + disks[i] + ' -f && '
+    
+mkdirs = 'mkdir /var/dump/disk{' + str(first_number_disk) + '..' + str(len(disks)+first_number_disk) + '}'
 
 while True:
     line = file_blkid.readline()
@@ -30,7 +31,7 @@ while True:
 
 file_result = open('result.txt','w', encoding='utf-8')
 
-file_result.write(str(mkdirs[:-3] + '\n'))
+file_result.write(str(mkdirs + '\n'))
 file_result.write('\n')
 file_result.write(str(mkfs[:-3] + '\n'))
 file_result.write('\n')
