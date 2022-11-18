@@ -17,7 +17,7 @@ while True:
 disks = [line.rstrip() for line in disks]
 
 for i in range(len(disks)):
-    mkdirs += 'mkdir /var/dump/disk' + str(i+1) + ' && '
+    mkdirs += 'mkdir /var/dump/disk' + str(i+first_number_disk) + ' && '
     mkfs += 'mkfs.xfs /dev/' + disks[i] + ' -f && '
 
 while True:
