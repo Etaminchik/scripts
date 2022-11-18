@@ -1,6 +1,8 @@
 import os
 os.system('blkid > blkid.txt')
 
+first_number_disk = 1 # С какого по счету /var/dump/disk[i] будут создаваться каталоги
+
 file_disks= open('disks.txt','r', encoding='utf-8')
 file_blkid= open('blkid.txt','r', encoding='utf-8')
 mkdirs = ''
@@ -23,7 +25,7 @@ while True:
     if not line:
         break
     if line.split()[0][5:-1] in disks:
-        fstab_line = line.split()[1] + ' /var/dump/disk' + str(len(uuid) + 1) + ' xfs defailts 0 0'
+        fstab_line = line.split()[1] + ' /var/dump/disk' + str(len(uuid) + first_number_disk) + ' xfs defailts 0 0'
         uuid.append(fstab_line)
 
 file_result = open('result.txt','w', encoding='utf-8')
