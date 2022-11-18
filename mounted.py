@@ -25,7 +25,7 @@ while True:
     if not line:
         break
     if line.split()[0][5:-1] in disks:
-        fstab_line = line.split()[1] + ' /var/dump/disk' + str(len(uuid) + first_number_disk) + ' xfs defailts 0 0'
+        fstab_line = line.split()[1].replace('"','') + ' /var/dump/disk' + str(len(uuid) + first_number_disk) + ' xfs defailts 0 0'
         uuid.append(fstab_line)
 
 file_result = open('result.txt','w', encoding='utf-8')
