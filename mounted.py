@@ -22,11 +22,9 @@ while True:
     line = file_blkid.readline()
     if not line:
         break
-    for i in range(len(disks)):
-        if disks[i] in line:
-            fstab_line = line.split()[1] + ' /var/dump/disk' + str(i+1) + ' xfs defailts 0 0'
-            uuid.append(fstab_line)
-uuid = [line.rstrip() for line in uuid]
+    if line.split()[0][5:-1] in disks:
+        fstab_line = line.split()[1] + ' /var/dump/disk' + str(len(uuid) + 1) + ' xfs defailts 0 0'
+        uuid.append(fstab_line)
 
 file_result = open('result.txt','w', encoding='utf-8')
 
