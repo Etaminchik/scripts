@@ -27,10 +27,6 @@ while True:
             fstab_line = line.split()[1] + ' /var/dump/disk' + str(i+1) + ' xfs defailts 0 0'
             uuid.append(fstab_line)
 uuid = [line.rstrip() for line in uuid]
-print(uuid[0])
-
-
-
 
 file_result = open('result.txt','w', encoding='utf-8')
 
