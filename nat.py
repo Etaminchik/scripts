@@ -7,8 +7,8 @@ con = psycopg2.connect(
   database="vasexperts", 
   user="oim_admin", 
   password="admin", 
-  host="127.0.4.11", 
-  port="5434"
+  host="127.0.0.1", 
+  port="54321"
 )
 
 select_nat = Template("select\
