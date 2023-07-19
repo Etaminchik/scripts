@@ -182,12 +182,12 @@ for operator in operators:
             for i in range(len(result)):
                 procent += result[i][1]
             procent = procent / len(result)
-            print("{:<38} {:<10} {:<45} {:<10}".format(result[0][0], f'{100 - procent*100:.3f}', result[0][2]))
+            print("{:<38} {:<10} {:<45}".format(result[0][0], f'{100 - procent*100:.3f}', result[0][2]))
         elif len(result) == 1:
-            print("{:<38} {:<10} {:<45} {:<10}".format(result[0][0], f'{100 - result[0][1]*100:.3f}', result[0][2]))
+            print("{:<38} {:<10} {:<45}".format(result[0][0], f'{100 - result[0][1]*100:.3f}', result[0][2]))
 
 
-    print("{:<38} {:<10} {:<45} {:<10}".format('Name','Percent','Range','Count'))
+    print("{:<38} {:<10} {:<45}".format('Name','Percent','Range'))
     unification(results_http)
     unification(results_raw)
     unification(results_voip)
