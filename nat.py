@@ -12,8 +12,8 @@ con = psycopg2.connect(
   database="vasexperts", 
   user="oim_admin", 
   password="admin", 
-  host="127.0.2.125", 
-  port="5434"
+  host="127.0.0.1", 
+  port="54321"
 )
 cur = con.cursor()  
 
