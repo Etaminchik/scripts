@@ -908,7 +908,7 @@ def check_billing():
 
 
     result = ''
-    file_name = f"""{operators[num][5]}logins_without_billing_{datetime.today().strftime("%Y%m%d%H%M%S")}.txt"""
+    file_name = f"""{operators[num][5].replace(' ','_')}logins_without_billing_{datetime.today().strftime("%Y%m%d%H%M%S")}.txt"""
     f = open(file_name,'w') 
     for login in logins:
         result += login[0] + '\n'
