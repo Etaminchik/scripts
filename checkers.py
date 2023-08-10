@@ -14,6 +14,10 @@ from string import Template
 task_create_date = datetime.today()
 date_l = (datetime.today() - timedelta(days=3)).strftime("%Y-%m-%d 23:00:00")
 date_h = (datetime.today() - timedelta(days=1)).strftime("%Y-%m-%d 01:00:00")
+#Так как большинство партиций суточные, чтобы их зацепить при поиске нужно брать -1 час и +1 час, то-есть 23:00 и 01:00
+date_l = "2023-08-09 23:00:00"
+date_h = "2023-08-11 01:00:00"
+
 telcos = []
 if not os.path.isdir('reports'):
     os.mkdir('reports')   
