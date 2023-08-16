@@ -760,8 +760,7 @@ def check_billing():
     select_logins = Template("""
           select distinct ${type_}_subscriber_id
           from ${partition}
-          where ${type_}_telco_code = ${operator}
-          and ${type_}_subscriber_id not in 
+          where ${type_}_subscriber_id not in 
           (select sgh.sgnh_identity
           from oims.subscribers s join
           oims.subs_generic_history sgh 
