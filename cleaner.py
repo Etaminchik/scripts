@@ -16,9 +16,11 @@ PASSWORD=""
 # 0 0 * * * * /bin/python3 /opt/vasexperts/bin/cleaner.py >> /opt/vasexperts/var/log/cleaner.log
 
 #Log format:
+# [S] - Launch the program and establish a connection to the database.
 # [N] - The table was not deleted due to the day limit.
 # [D] - The table has been deleted.
 # [C] - The script has finished working due to the large free disk space.
+# [E] - Stopping the program and closing the connection to the database.
 
 import psycopg2
 from datetime import datetime,timedelta
@@ -35,7 +37,6 @@ class Cleaner:
         self.critical_space = CRITICAL_PERCENTAGE
         self.critical_days = CLEANING_LIMIT_IS_DAYS
         self.cur = self.con.cursor()
-
 
     def check_scheme(self):
         _select = "select cmvr_version from oimm.component_versions where cmvr_name = 'oimc_scheme'"
@@ -69,7 +70,11 @@ class Cleaner:
         self.cur.execute(_drop_table)
         self.con.commit() #save
 
+    def close_connect_db(self):
+        self.con.close()
+
     def run(self):
+        print("[ {} ] [S] Launch the program and establish a connection to the database.".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
         if self.check_occupied_space() > self.critical_space:
             while self.check_occupied_space() > self.critical_space:
                 occupied_space = self.check_occupied_space()
@@ -98,4 +103,8 @@ class Cleaner:
                 self.critical_space))
 
 if __name__ == "__main__":
-    Cleaner().run()
+    try:
+        Cleaner().run()
+    finally:
+        Cleaner().close_connect_db()
+        print("[ {} ] [E] Stopping the program and closing the connection to the database.".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
