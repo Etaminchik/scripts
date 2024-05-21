@@ -10,6 +10,10 @@ NAME="vasexperts"
 USER="postgres"
 PASSWORD=""
 
+#Log format:
+# [N] - The table was not deleted due to the day limit.
+# [D] - The table has been deleted.
+# [C] - The script has finished working due to the large free disk space.
 import psycopg2
 from datetime import datetime,timedelta
 import os, time
