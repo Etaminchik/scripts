@@ -10,13 +10,19 @@ NAME="vasexperts"
 USER="postgres"
 PASSWORD=""
 
+#Launch:
+# python3 cleaner.py
+#Cron at 3 a.m. every day:
+# 0 0 * * * * /bin/python3 /opt/vasexperts/bin/cleaner.py >> /opt/vasexperts/var/log/cleaner.log
+
 #Log format:
 # [N] - The table was not deleted due to the day limit.
 # [D] - The table has been deleted.
 # [C] - The script has finished working due to the large free disk space.
+
 import psycopg2
 from datetime import datetime,timedelta
-import os, time
+import os
 
 class Cleaner:
     def __init__(self) -> None:
