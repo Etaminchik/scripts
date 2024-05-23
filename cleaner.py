@@ -103,8 +103,9 @@ class Cleaner:
                 self.critical_space))
 
 if __name__ == "__main__":
+    cleaner = Cleaner()
     try:
-        Cleaner().run()
+        cleaner.run()
     finally:
-        Cleaner().close_connect_db()
+        cleaner.close_connect_db()
         print("[ {} ] [E] Stopping the program and closing the connection to the database.".format(datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
