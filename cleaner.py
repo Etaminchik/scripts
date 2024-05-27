@@ -33,7 +33,7 @@ class Cleaner:
                                     password=PASSWORD,
                                     host=HOST,
                                     port=PORT)
-        self.statvfs = os.statvfs(PATH_DB)
+        self.path_db = PATH_DB
         self.critical_space = CRITICAL_PERCENTAGE
         self.critical_days = CLEANING_LIMIT_IS_DAYS
         self.cur = self.con.cursor()
@@ -44,7 +44,7 @@ class Cleaner:
         return int(self.cur.fetchall()[0][0].split('.')[0])
 
     def check_occupied_space(self):
-        return 100 - (self.statvfs.f_bfree / self.statvfs.f_blocks * 100)
+        return 100 - (self.statvfs(self.path_db).f_bfree / self.statvfs(self.path_db).f_blocks * 100)
         
     def search_table(self):
         if self.check_scheme() < 8:
