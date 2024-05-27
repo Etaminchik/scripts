@@ -79,7 +79,7 @@ class Cleaner:
             while self.check_occupied_space() > self.critical_space:
                 occupied_space = self.check_occupied_space()
                 table,range_min,range_max = self.search_table()
-
+                range_min = datetime.strptime(range_min, '%Y-%m-%d %H:%M:%S')
                 if range_min > datetime.now() - timedelta(days=self.critical_days):
                     print("[ {} ] [N] BUSY: {:.2f}% | CRIT: {}% | TABLE: {} | MIN: {} | The table was not deleted due to the date limit".format(
                             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
