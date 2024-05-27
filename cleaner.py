@@ -81,7 +81,7 @@ class Cleaner:
                 table,range_min,range_max = self.search_table()
                 range_min = datetime.strptime(range_min, '%Y-%m-%d %H:%M:%S')
                 if range_min > datetime.now() - timedelta(days=self.critical_days):
-                    print("[ {} ] [N] BUSY: {:.2f}% | CRIT: {}% | TABLE: {} | MIN: {} | The table was not deleted due to the date limit".format(
+                    print("[ {} ] [N] BUSY: {:.5f}% | CRIT: {}% | TABLE: {} | MIN: {} | The table was not deleted due to the date limit".format(
                             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                             occupied_space,
                             self.critical_space,
@@ -90,14 +90,14 @@ class Cleaner:
                     break
                 else:
                     self.drop_table(table)
-                    print("[ {} ] [D] BUSY: {:.2f}% | CRIT: {}% | TABLE: {} | MIN: {} | The table has been deleted".format(
+                    print("[ {} ] [D] BUSY: {:.5f}% | CRIT: {}% | TABLE: {} | MIN: {} | The table has been deleted".format(
                             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                             occupied_space,
                             self.critical_space,
                             table,
                             range_min))
         else:
-            print("[ {} ] [C] BUSY: {:.2f}% | CRIT: {}% | There is more free space than the threshold value.".format(
+            print("[ {} ] [C] BUSY: {:.5f}% | CRIT: {}% | There is more free space than the threshold value.".format(
                 datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 self.check_occupied_space(),
                 self.critical_space))
