@@ -13,7 +13,7 @@ PASSWORD=""
 #Launch:
 # python3 cleaner.py
 #Cron at 3 a.m. every day:
-# 0 0 * * * * /bin/python3 /opt/vasexperts/bin/cleaner.py >> /opt/vasexperts/var/log/cleaner.log
+# 0 0 * * * /bin/python3 /opt/vasexperts/bin/cleaner.py >> /opt/vasexperts/var/log/cleaner.log
 
 #Log format:
 # [S] - Launch the program and establish a connection to the database.
